@@ -3,45 +3,120 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
         <style>
+            body{
+                margin: 0px;
+            }
         .container {
             display: flex;
             height: 25px;
             width: 100%;
-            background-color: darkblue;
+            background-color: cornflowerblue;
             color: white;
             align-items: left;
+            text-decoration: none;
+            font-family: 'Lato', sans-serif;
         }
-        .links {
-        height: 25px;
-        width: 50px;
+        .container div {
+            display: none;
         }
-        .logo {
-            flex-direction: left;
-            height: 25px;
-            width: 100px;
+        .container .toggle,
+        .container .logo {
+            display: inline-block;
         }
-        .link3 {
-            align-content: flex-end;
+        .container .links {
+            display: block;
+            text-align: center;
+            padding: 1em;
+            text-decoration: none;
+            background: #223047;
+            color: white;
         }
-        .links hover a {
+    
+        .container .link:hover,
+        .container .link:active {
             background-color: white;
-            color: darkblue;
-            cursor: pointer;
+            color: #223047;
+        }
+        .container .logo {
+            width: 10em;
+            text-align:center;
+            padding: 1em;
+            color: white;
+        }
+        .container a {
+            text-decoration: none;
+        }
+        .container .toggle {
+            padding: 1em;
+            color: black;
         }
 
+        @media (min-width: 48em) {
+            .container {
+                display: flex;
+            } 
+
+            .container div {
+                display: flex;
+                flex: 1;
+            }
+            .container .left,
+            .container .right {
+                display: flex;
+                flex: 1;
+            }
+            .container .link {
+                width: auto;
+            }
+            .container .right {
+                justify-content: flex-end;
+            }
+
+            .container .toggle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 48em) {
+            .container.active .toggle{
+                background-color: #223047;
+                color: white;
+            }
+
+            .container .logo {
+                text-align: left;
+            }
+            .container .active div {
+                display: block;
+            }
+        }
         </style>
     </head>
     <body>
         <div class= 'container'>
-            <div class= 'logo'>
-                <a>MyName</a>
-            </div>
-            <div class= 'links'>
+            <a href='#' class"toggle" id="navHamburger">
+                <i class="fas fa-bars"></i>
+            </a>
+            <a href='#' class='logo'>MyName</a>
+
+            <div class= 'left'>
                 <a class='link1'>link 1</a>
                 <a class='link2'>link 2</a>
+                </div>
+                <div class='right'></div>
                 <a class='link3'>link 3</a>
             </div>
         </div>
     </body>
+
+    <script>
+        const navHamburger = document.querySelector('#navHamburger');
+
+        navHamburger.addEventListener('click', (e) => {
+            navHamburger.parentElement.classList.toggle('active')
+        }) 
+    </script>
 </html>
